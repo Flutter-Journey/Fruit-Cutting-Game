@@ -38350,8 +38350,8 @@ case 2:p=n.ax
 p===$&&A.e()
 p=p.k4
 o=B.e.j(n.gD().hz)
-B.e.j(n.gD().by)
-new A.qT("Game Result Submission: "+p+" - Score: "+o+" - Mode: mode - Win: 0").hp()
+n=B.e.j(n.gD().by)
+new A.qT("Game Result Submission: "+p+" - Score: "+o+" - Mode: "+n+" - Win: 0").hp()
 return A.q(null,r)}})
 return A.r($async$$0,r)},
 $S:5}
@@ -38512,7 +38512,7 @@ q===$&&A.e()
 p=r+" (UTC+7)"
 if(q.k4!==p)q.sdf(0,p)},
 cQ(a){return this.M4(a)},
-M4(a){var s=0,r=A.t(t.H),q=this,p,o
+M4(a){var s=0,r=A.t(t.H),q=this,p,o,n
 var $async$cQ=A.u(function(b,c){if(b===1)return A.p(c,r)
 while(true)switch(s){case 0:s=2
 return A.v(q.cE(),$async$cQ)
@@ -38520,8 +38520,8 @@ case 2:p=q.ax
 p===$&&A.e()
 p=p.k4
 o=B.e.j(q.gD().hz)
-B.e.j(q.gD().by)
-new A.qT("Game Result Submission: "+p+" - Score: "+o+" - Mode: mode - Win: 1").hp()
+n=B.e.j(q.gD().by)
+new A.qT("Game Result Submission: "+p+" - Score: "+o+" - Mode: "+n+" - Win: 1").hp()
 return A.q(null,r)}})
 return A.r($async$cQ,r)},
 cE(){var s=0,r=A.t(t.H),q=1,p,o=this,n,m,l,k,j,i,h,g,f,e,d,c
