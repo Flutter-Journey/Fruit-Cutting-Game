@@ -1,30 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="/Fruit-Cutting-Game/">
-
   <base href="/Fruit-Cutting-Game/">
-
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description"
         content="A fun and interactive Fruit Cutting Game built using Flutter. 🎮">
   <meta name="keywords"
-        content="Nguyển Thành Chung, Chung Nguyen Thanh, Nguyen Thanh Chung, ChunhThanhDe, ChunhThanhDe Software Engineers in VietNam, flutter example, Fruit Cutting Game, Fruit Ninja">
+        content="Nguyễn Thành Chung, Chung Nguyen Thanh, Nguyen Thanh Chung, ChunhThanhDe, ChunhThanhDe Software Engineers in VietNam, flutter example, Fruit Cutting Game, Fruit Ninja">
   <meta name="author" content="ChunhThanhDe">
 
   <!-- iOS meta tags & icons -->
@@ -37,21 +22,68 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./assets/icons/fruit_cutting_logo.png"/>
-
   <link rel="manifest" href="./assets/manifest.json">
+
+  <style>
+    /* Set body and html to full height and remove margins */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black; /* Set background to black */
+      display: flex;
+      justify-content: center;
+      align-items: center; /* Center the content vertically */
+    }
+    /* Style for the loading image */
+    #loading-image {
+      height: 250px; /* Set fixed height for the GIF */
+    }
+  </style>
 </head>
 <body>
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
+  <!-- Loading image -->
+  <img id="loading-image" src="./assets/load.gif" alt="Loading...">
+
   <script>
+      // Variable to track if the app has loaded
+      let appLoaded = false;
+
+      // Check for service worker registration and hide the loading image when ready
       if ('serviceWorker' in navigator) {
         window.addEventListener('flutter-first-frame', function () {
-          navigator.serviceWorker.register('flutter_service_worker.js?v=2222597059');
+          navigator.serviceWorker.register('flutter_service_worker.js?v=2902242697');
+          appLoaded = true; // Mark the app as loaded
+          hideLoadingImage();
         });
       }
+
+      // Function to hide the loading image
+      function hideLoadingImage() {
+        if (appLoaded) {
+          document.getElementById('loading-image').style.display = 'none';
+        }
+      }
+
+      // Ensure the loading image is displayed for at least 3 seconds
+      const minLoadTime = 3000; // 3 seconds
+      const startTime = Date.now();
+
+      const interval = setInterval(() => {
+        // Check if the minimum load time has passed and the app has loaded
+        if (appLoaded && (Date.now() - startTime >= minLoadTime)) {
+          hideLoadingImage();
+          clearInterval(interval); // Stop the interval check
+        }
+      }, 100); // Check every 100ms
+
+      // If the minimum load time passes, hide the loading image regardless
+      setTimeout(() => {
+        appLoaded = true; // Set to true to bypass any further checks
+        hideLoadingImage(); // Hide the loading image after 3 seconds if the app hasn't loaded
+      }, minLoadTime);
   </script>
-  
+
   <script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>
