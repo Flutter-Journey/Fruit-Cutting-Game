@@ -46,42 +46,15 @@
   <img id="loading-image" src="./assets/load.gif" alt="Loading...">
 
   <script>
-      // Variable to track if the app has loaded
-      let appLoaded = false;
-
-      // Check for service worker registration and hide the loading image when ready
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('flutter-first-frame', function () {
-          navigator.serviceWorker.register('flutter_service_worker.js?v=900432827');
-          appLoaded = true; // Mark the app as loaded
-          hideLoadingImage();
-        });
-      }
-
-      // Function to hide the loading image
-      function hideLoadingImage() {
-        if (appLoaded) {
-          document.getElementById('loading-image').style.display = 'none';
+    // Remove loading image after 10 seconds
+    window.onload = function () {
+      setTimeout(function () {
+        var loadingIndicator = document.getElementById("loading-image");
+        if (loadingIndicator) {
+          loadingIndicator.remove();
         }
-      }
-
-      // Ensure the loading image is displayed for at least 3 seconds
-      const minLoadTime = 3000; // 3 seconds
-      const startTime = Date.now();
-
-      const interval = setInterval(() => {
-        // Check if the minimum load time has passed and the app has loaded
-        if (appLoaded && (Date.now() - startTime >= minLoadTime)) {
-          hideLoadingImage();
-          clearInterval(interval); // Stop the interval check
-        }
-      }, 100); // Check every 100ms
-
-      // If the minimum load time passes, hide the loading image regardless
-      setTimeout(() => {
-        appLoaded = true; // Set to true to bypass any further checks
-        hideLoadingImage(); // Hide the loading image after 3 seconds if the app hasn't loaded
-      }, minLoadTime);
+      }, 10000);
+    };
   </script>
 
   <script src="main.dart.js" type="application/javascript"></script>
